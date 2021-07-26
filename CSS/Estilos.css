@@ -4,7 +4,12 @@
 body {
     background-color: #e5e5e5;
 }
-
+strong {
+    font-weight: bold;
+}
+a {
+    text-decoration:none;
+}
 .conteudo {
     margin-top: 123px;
     margin-bottom: 108px;
@@ -33,6 +38,7 @@ p {
     background-color: #cf2b2b;
     padding: 8px 0px 18px 21px;
     box-shadow: 0px 0px 10px 3px gray;
+    z-index: 100;
 }
 
 .titulos {
@@ -59,24 +65,28 @@ p {
     background-color: #ffffff;
     padding: 18px 13px 16px 15px;
     text-align: left;
-    box-shadow: 100px 20px 10px 10px gray;
+    box-shadow: 0px 0px 1px 1px gray;
     border-radius: 9px;
+    position: relative;
+    
 }
 .bebida {
     margin-right: 16px;
     background-color: #ffffff;
     padding: 18px 13px 16px 15px;
     text-align: left;
-    box-shadow: 100px 20px 10px 10px gray;
+    box-shadow: 0px 0px 1px 1px gray;
     border-radius: 9px;
+    position: relative;
 }
 .sobremesa {
     margin-right: 16px;
     background-color: #ffffff;
     padding: 18px 13px 16px 15px;
     text-align: left;
-    box-shadow: 100px 20px 10px 10px gray;
+    box-shadow: 0px 0px 1px 1px gray;
     border-radius: 9px;
+    position: relative;
 }
 .imagem-cardapio {
     height: 87px;
@@ -131,6 +141,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 100;
 }
 .botao-desabilitado {
     width: 80%;
@@ -140,7 +151,6 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 .escrita-desabilitado {
     color: #ffffff;
@@ -149,10 +159,39 @@ p {
 
 /*Dinamico*/
 
-
-.habilitado {
+.simbolo-check {
+    font-size: 18px;
+    color: green;
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    display: none;
+}
+.ok {
+    display: block;
+}
+.botao-habilitado {
+    width: 80%;
+    height: 61px;
+    border-radius: 50px;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
+.escondido {
+    display: none;
+}
+
+
 .escolhido {
-    border: solid 3px green;
+    border: solid 6px green;
+}
+.resumoPedido {
+    height: 353px;
+    margin: auto;
+    width: fit-content;
+    background-color: green;
+
 }
