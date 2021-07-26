@@ -5,15 +5,18 @@ let precoBebida;
 let sobremesa;
 let precoSobremesa;
 let linkWpp = ""
-
+let total = 0;
+//TRANSFORM COMMA TO DOT
 function virgulaPonto(numVirgula) {
-    const numPonto = numVirgula.replace(',','.');
+    let numPonto = numVirgula.replace(',','.');
     return numPonto;
 }
 
+// ARCHIVING FOOD VARIABLES
+
 function comidaPedida(elemento) {
-    const jaEscolhido = document.querySelector(".prato.escolhido");
-    const jaEscolhidoCheck = document.querySelector(".prato .ok");
+    let jaEscolhido = document.querySelector(".prato.escolhido");
+    let jaEscolhidoCheck = document.querySelector(".prato .ok");
     console.log(jaEscolhidoCheck);
     if (jaEscolhido !== null) {
         jaEscolhido.classList.remove("escolhido");
@@ -31,9 +34,11 @@ function comidaPedida(elemento) {
     console.log(prato);
     liberarCompra();
 }
+
+// ARCHIVING DRINK VARIABLES
 function bebidaPedida(elemento) {
-    const jaEscolhido = document.querySelector(".bebida.escolhido");
-    const jaEscolhidoCheck = document.querySelector(".bebida .ok");
+    let jaEscolhido = document.querySelector(".bebida.escolhido");
+    let jaEscolhidoCheck = document.querySelector(".bebida .ok");
     console.log(jaEscolhido);
     if (jaEscolhido !== null) {
         jaEscolhido.classList.remove("escolhido");
@@ -52,9 +57,11 @@ function bebidaPedida(elemento) {
     liberarCompra();
 }
 
+
+// ARCHIVING DESSERT VARIABLES
 function sobremesaPedida(elemento) {
-    const jaEscolhido = document.querySelector(".sobremesa.escolhido");
-    const jaEscolhidoCheck = document.querySelector(".sobremesa .ok");
+    let jaEscolhido = document.querySelector(".sobremesa.escolhido");
+    let jaEscolhidoCheck = document.querySelector(".sobremesa .ok");
     console.log(jaEscolhido);
     if (jaEscolhido !== null) {
         jaEscolhido.classList.remove("escolhido");
@@ -73,6 +80,8 @@ function sobremesaPedida(elemento) {
     console.log(sobremesa);
     liberarCompra();
 }
+
+// RELEASE BUY BUTTON
 function liberarCompra() {
     if (prato !== undefined && sobremesa !== undefined && bebida !== undefined ) {
         console.log("Ok");
@@ -80,24 +89,40 @@ function liberarCompra() {
         document.querySelector('.botao-habilitado').classList.remove('escondido');
     }else {console.log("Nao ok")}
 }
+
+//SEND REQUEST
 function enviarPedido() {
-    const total = (precoPrato + precoBebida + precoSobremesa).toFixed(2);
-    const nome = prompt("Informe seu nome");
-    const endereco = prompt("Agora, digite seu endereço");
-    const mensagem = `a Olá, gostaria de fazer o pedido:
+    
+    let nome = prompt("Informe seu nome");
+    let endereco = prompt("Agora, digite seu endereço");
+    let mensagem = `a Olá, gostaria de fazer o pedido:
     - Prato: ${prato}
     - Bebida: ${bebida}
     - Sobremesa: ${sobremesa}
-    Total: R$ ${total}
+    Total: R$ ${total.toFixed(2)}
     
     Nome: ${nome}
     Endereço: ${endereco}`;
     console.log(mensagem);
-    const msgWpp = encodeURIComponent(mensagem);
+    let msgWpp = encodeURIComponent(mensagem);
     linkWpp = "https://wa.me/5521979778806?text=" + msgWpp;
-    document.querySelector(".bottom a").href = linkWpp;
+    document.querySelector(".final a").href = linkWpp;
+}
+//ORDER SUMMARY APPEARS
+function resumoPedido() {
+    resumoLista();
+    document.querySelector(".resumo-pedido").classList.remove("escondido");
+    document.querySelector(".retangulo-transparente").classList.remove("escondido");
+}
+function cancelarPedido(){
+    document.querySelector(".resumo-pedido").classList.add("escondido");
+    document.querySelector(".retangulo-transparente").classList.add("escondido");
+
 }
 
-function resumoPedido() {
-
+//ORDER SUMMARY IS MADE
+function resumoLista() {
+    total = (precoPrato + precoBebida + precoSobremesa);
+    
+    document.querySelector(".lista-pedido").innerHTML = `\n\t\t\t\t<div>\n\t\t\t\t\t<p>${prato}</p>\n\t\t\t\t\t<p>${precoPrato.toFixed(2)}</p>\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<p>${bebida}</p>\n\t\t\t\t\t<p>${precoBebida.toFixed(2)}</p>\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<p>${sobremesa}</p>\n\t\t\t\t\t<p>${precoSobremesa.toFixed(2)}</p>\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<p><strong>TOTAL</strong></p>\n\t\t\t\t\t<p><strong>R$ ${total.toFixed(2)}</strong></p>\n\t\t\t\t</div>\n\t\t\t`
 }

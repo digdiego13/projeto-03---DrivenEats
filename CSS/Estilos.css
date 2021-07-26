@@ -10,6 +10,9 @@ strong {
 a {
     text-decoration:none;
 }
+button {
+    border: none;
+}
 .conteudo {
     margin-top: 123px;
     margin-bottom: 108px;
@@ -188,10 +191,76 @@ p {
 .escolhido {
     border: solid 6px green;
 }
-.resumoPedido {
-    height: 353px;
-    margin: auto;
-    width: fit-content;
+.resumo-pedido {
+   
+    width: 90%;
     background-color: green;
+    position: fixed;
+    left: 5%;
+    top: calc(50% - 176.5px);
+    z-index: 1000000;
+    border-radius: 10px;
+    padding: 21px 26px 0px 26px;
+    box-shadow: gray;
 
+}
+.lista-pedido {
+    margin-top: 28px;
+    margin-bottom: 24px;
+    color: #ffffff;
+    font-size: 22px;
+}
+.lista-pedido div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 13px;
+}
+.final {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tudo-certo {
+    height: 52px;
+    width: 90%;
+    border-radius: 100px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tudo-certo p {
+    color: green;
+    font-weight: bold;
+    font-size: 22px;
+    margin: auto;
+    text-align: center;
+}
+.botao-cancelar {
+    height: 52px;
+    width: 90%;
+    border-radius: 100px;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.botao-cancelar p {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    margin: auto;
+
+}
+.retangulo-transparente {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0px;
+    left: 0px; 
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.5);
 }
